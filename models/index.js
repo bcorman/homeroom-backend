@@ -1,5 +1,9 @@
 const mongoose = require('mongoose')
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/homeroom/api')
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/homeroom', { useNewUrlParser: true })
+
+new Promise((resolve, reject) => {
+  setTimeout(() => reject('woops'), 500);
+})
 
 module.exports = {
   Assignment: require('./assignment.js'),

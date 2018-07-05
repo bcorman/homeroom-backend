@@ -11,7 +11,7 @@ const PostSchema = new Schema({
   },
   type: {
     type: String,
-    enum: [announcement, note, lessonPlan]
+    enum: ['announcement', 'note', 'lessonPlan']
   },
   classRoom: {
     type: Schema.Types.ObjectId,

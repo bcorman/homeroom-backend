@@ -7,7 +7,7 @@ const StudentSchema = new Schema({
   classes: [{
     type: Schema.Types.ObjectId,
     ref: 'Class'
-  }]
+  }],
   scores: [{
     type: Schema.Types.ObjectId,
     ref: 'Grade'

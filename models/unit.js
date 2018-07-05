@@ -11,9 +11,9 @@ const UnitSchema = new Schema({
   assignments: [{
     type: Schema.Types.ObjectId,
     ref: 'Assignment'
-  }]
+  }],
   notes: [{
-    type: Schema.types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'Post'
   }]
 })
