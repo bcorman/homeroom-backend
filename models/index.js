@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/project-wayfarer');
+const mongoose = require('mongoose')
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/homeroom/api')
 
 module.exports = {
   Assignment: require('./assignment.js'),
@@ -9,4 +9,4 @@ module.exports = {
   Student: require('./student.js'),
   Unit: require('./unit.js'),
   User: require('./user.js')
-};
+}
