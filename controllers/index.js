@@ -1,9 +1,10 @@
 module.exports = {
-  assignment: require('./assignmentController.js'),
-  class: require('./classController.js'),
-  grade: require('./gradeController.js'),
-  post: require('./postController.js'),
-  student: require('./studentController.js'),
-  unit: require('./unitController.js'),
-  user: require('./userController.js')
+  authentication: require('./authenticationController'),
+  assignment: require('./assignmentController'),
+  class: require('./classController'),
+  grade: require('./gradeController'),
+  post: require('./postController'),
+  student: require('./studentController'),
+  unit: require('./unitController'),
+  user: require('./userController')
 }
