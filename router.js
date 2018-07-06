@@ -6,5 +6,5 @@ const requireSignIn = passport.authenticate('local', {session: false});
 
 module.exports = (app) => {
   app.post('/signup', controller.authentication.signup)
-  // app.post('/signin', requireSignIn, controller.authentication.signin);
+  app.post('/signin', requireSignIn, controller.authentication.signin);
 }
