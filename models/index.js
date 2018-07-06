@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/homeroom', { useNewUrlParser: true })
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/homeroom')
 
 new Promise((resolve, reject) => {
   setTimeout(() => reject('woops'), 500)
