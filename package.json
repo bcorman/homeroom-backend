@@ -25,6 +25,7 @@
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "jwt-simple": "^0.5.1",
+    "lodash": "^4.17.10",
     "mongoose": "^5.2.1",
     "morgan": "^1.9.0",
     "node": "^10.6.0",
@@ -32,7 +33,6 @@
     "npm": "^6.1.0",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
-    "passport-local": "^1.0.0",
-    "semantic-ui-react": "^0.82.0"
+    "passport-local": "^1.0.0"
   }
 }
