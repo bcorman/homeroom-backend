@@ -18,12 +18,8 @@ exports.signIn = (req, res, next) => {
 }
 
 exports.signUp = (req, res, next) => {
-  console.log(config.secret)
   const email = req.body.email
   const password = req.body.password
-  
-  console.log(email)
-  console.log(password)
   // See if a user with the given email exists
   if (!email || !password) {
     return res.status(422).send({error: 'You must provide email and password'})

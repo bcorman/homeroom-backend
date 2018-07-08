@@ -12,25 +12,31 @@ let UserSchema = new Schema({
   }]
 })
 
-UserSchema.pre('save', (next) => {
-  const user = this
-  bcrypt.genSalt(10, (err, salt) => {
-    if (err) { return next(err) }
-
-    bcrypt.hash(user.password, salt, null, (err, hash) => {
-      if (err) { return next(err) }
-
+UserSchema.pre('save', function (next) {
+  const user = this;
+  bcrypt.genSalt(10, function (err, salt) {
+    if (err) {
+      return next(err);
+    }
+    bcrypt.hash(user.password, salt, null, function (err, hash) {
+      if (err) {
+        return next(err);
+      }
       user.password = hash;
-      next()
-    })
-  })
-})
+      next();
+    });
+  });
+});
 
-UserSchema.methods.comparePassword = (candidatePassword, callback) => {
-  bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
-    if (err) { return callback(err) }
-    callback(null, isMatch)
-  })
+UserSchema.methods.comparePassword = function (candidatePassword, callback) {
+  bcrypt.compare(candidatePassword, this.password, function (err, isMatch) {
+    console.log(candidatePassword)
+    console.log(this.password)
+    if (err) {
+      return callback(err);
+    }
+    callback(null, isMatch);
+  });
 }
 
 

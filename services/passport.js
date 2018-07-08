@@ -14,9 +14,11 @@ const localLogin = new LocalStrategy(localOptions, function (email, password, do
   // otherwise call done with false
   User.findOne({email: email}, function (err, user) {
     if (err) {
+      console.log('line 17')
       return done(err)
     }
     if (!user) {
+      console.log('line 21')
       return done(null, false);
     }
     user.comparePassword(password, function (err, isMatch) {
@@ -24,6 +26,7 @@ const localLogin = new LocalStrategy(localOptions, function (email, password, do
         return done(err);
       }
       if (!isMatch) {
+        console.log('line 30')
         return done(null, false);
       }
       return done(null, user);
