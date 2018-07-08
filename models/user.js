@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
 let Schema = mongoose.Schema
-const bcrypt = require('bcrypt-nodejs')
+let bcrypt = require('bcrypt-nodejs')
 
-const UserSchema = new Schema({
+let UserSchema = new Schema({
   email: { type: String, unique: true},
   password: String,
   isAdmin: Boolean,

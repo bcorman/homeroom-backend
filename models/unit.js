@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const UnitSchema = new Schema({
+let UnitSchema = new Schema({
   title: String,
   description: String,
   lessonPlans: [{
