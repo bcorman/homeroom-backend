@@ -2,10 +2,11 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 let ClassSchema = new Schema({
-  faculty: [{
-    type: Schema.Types.ObjectId,
-    ref: 'User'
-  }],
+  gradeLevel: Number,
+  subject: {
+    type: String,
+    enum: ['math', 'science', 'english', 'foreignLanguage', 'humanities', 'art', 'music']
+  },
   units: [{
     type: Schema.Types.ObjectId,
     ref: 'Unit'

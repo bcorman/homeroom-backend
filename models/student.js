@@ -3,6 +3,7 @@ const Schema = mongoose.Schema
 
 let StudentSchema = new Schema({
   name: String,
+  gradeLevel: Number,
   birthdate: Date,
   classes: [{
     type: Schema.Types.ObjectId,

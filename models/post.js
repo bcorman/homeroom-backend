@@ -13,7 +13,7 @@ let PostSchema = new Schema({
     type: String,
     enum: ['announcement', 'note', 'lessonPlan']
   },
-  classRoom: {
+  class: {
     type: Schema.Types.ObjectId,
     ref: 'Class'
   },
