@@ -5,7 +5,7 @@ let ClassSchema = new Schema({
   gradeLevel: Number,
   subject: {
     type: String,
-    enum: ['math', 'science', 'english', 'foreignLanguage', 'humanities', 'art', 'music']
+    enum: ['Math', 'Science', 'English', 'ForeignLanguage', 'Humanities', 'Art', 'Music']
   },
   units: [{
     type: Schema.Types.ObjectId,

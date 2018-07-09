@@ -32,10 +32,10 @@ defaultStudents = [{
 }]
 
 defaultClasses = [{
-  subject: 'science',
+  subject: 'Science',
   gradeLevel: 6
 },{
-  subject: 'music',
+  subject: 'Music',
   gradeLevel: 8
 }]
 

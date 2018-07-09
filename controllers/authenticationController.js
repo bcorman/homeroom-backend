@@ -1,5 +1,6 @@
 const jwt = require('jwt-simple')
 const User = require('../models/user')
+const db = require('../models')
 const config = require('../config')
 
 // Auth functions modeled after General Assembly WDI-Labs demonstration.
@@ -27,7 +28,10 @@ exports.signIn = function (req, res, next) {
       .select('-password')
       .exec(function (err, faculty) {
         if (err) { return next(err) }
-        res.send({token: tokenForUser(req.user), user, faculty })
+        db.Class.find({}, function (err, classes) {
+          if (err) { return next(err) }
+          res.send({token: tokenForUser(req.user), user, faculty, classes })
+        })
       })
     })
 }
