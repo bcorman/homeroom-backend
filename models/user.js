@@ -3,13 +3,14 @@ let Schema = mongoose.Schema
 let bcrypt = require('bcrypt-nodejs')
 
 let UserSchema = new Schema({
+  name: String,
   username: { type: String, unique: true},
   email: { type: String, unique: true},
   password: String,
   isAdmin: Boolean,
   classes: [{
     type: Schema.Types.ObjectId,
-    ref: 'Class'
+    ref: 'Class'           
   }]
 })
 

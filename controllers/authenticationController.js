@@ -18,30 +18,48 @@ exports.signIn = function (req, res, next) {
   User.findOne({email: email})
     .select('-password')
     .exec(function (err, user) {
-      if (err) { return next(err) }
-      res.send({token: tokenForUser(req.user), user })
+      if (err) {
+        console.log(err)
+        res.sendStatus(500)
+      }
+
+      User.find({})
+      .select('-password')
+      .exec(function (err, faculty) {
+        if (err) { return next(err) }
+        res.send({token: tokenForUser(req.user), user, faculty })
+      })
     })
 }
 
-exports.signUp = (req, res, next) => {
+exports.signUp = function (req, res, next) {
   const email = req.body.email
   const password = req.body.password
   const username = req.body.username
+  const isAdmin = req.body.checked
+  const name = req.body.name
+
   // See if a user with the given email exists
   if (!email || !password) {
     return res.status(422).send({error: 'You must provide email and password'})
   }
 
-  User.findOne({email: email}, (err, existingUser) => {
+  User.findOne({email: email}, function (err, existingUser) {
     if (err) {
       return next(err) }
     if (existingUser) { return res.status(422).send({error: 'Email is in use'}) }
 
-    const user = new User({ username, email, password })
+    const user = new User({ name, username, email, password, isAdmin })
 
-    user.save((err) => {
+    user.save( function (err) {
       if (err) { return next(err) }
-      res.json({token: tokenForUser(user), user: user.username })
+      User.find({})
+      .select('-password')
+      .populate('classes')
+      .exec(function (err, faculty) {
+        if (err) { res.sendStatus(500) }
+        res.json({token: tokenForUser(user), user, faculty })
+      })
     })
   })
 }
