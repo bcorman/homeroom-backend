@@ -11,15 +11,22 @@ const tokenForUser = (user) => {
   return jwt.encode({sub: user.id, iat: timestamp}, config.secret)
 }
 
-exports.signIn = (req, res, next) => {
+exports.signIn = function (req, res, next) {
   // User has already had their email and password auth'd
   // We just need to give them a token
-  res.send({token: tokenForUser(req.user)})
+  const email = req.body.email
+  User.findOne({email: email})
+    .select('-password')
+    .exec(function (err, user) {
+      if (err) { return next(err) }
+      res.send({token: tokenForUser(req.user), user })
+    })
 }
 
 exports.signUp = (req, res, next) => {
   const email = req.body.email
   const password = req.body.password
+  const username = req.body.username
   // See if a user with the given email exists
   if (!email || !password) {
     return res.status(422).send({error: 'You must provide email and password'})
@@ -27,15 +34,14 @@ exports.signUp = (req, res, next) => {
 
   User.findOne({email: email}, (err, existingUser) => {
     if (err) {
-      console.log('the error is here')
       return next(err) }
     if (existingUser) { return res.status(422).send({error: 'Email is in use'}) }
 
-    const user = new User({ email, password })
+    const user = new User({ username, email, password })
 
     user.save((err) => {
       if (err) { return next(err) }
-      res.json({token: tokenForUser(user)})
+      res.json({token: tokenForUser(user), user: user.username })
     })
   })
 }
