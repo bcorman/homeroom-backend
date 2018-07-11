@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 let PostSchema = new Schema({
   title: String,
   body: String,
-  timestamp: Date,
+  timestamp: {type: Date, default: new Date() },
   author: {
     type: Schema.Types.ObjectId,
     ref: 'User'
