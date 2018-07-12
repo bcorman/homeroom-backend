@@ -21,6 +21,7 @@ const defaultFaculty = [{
   isAdmin: false
 }]
 
+
 defaultStudents = [{
   name: 'Lisa Simpson',
   birthdate: new Date(1980, 01, 01),
